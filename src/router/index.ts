@@ -14,12 +14,22 @@ const router = createRouter({
     {
       path: '/hello-world',
       name: 'hello-world',
-      component: HelloWorldView,
+      component: () => import('@/views/HelloWorldView.vue'),
+    },
+    {
+      path: '/quote-generator',
+      name: 'quote-generator',
+      component: () => import('@/views/QuoteGeneratorView.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: AboutView,
+      component: () => import('@/views/AboutView.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/views/NotFoundView.vue'),
     },
   ],
 })
