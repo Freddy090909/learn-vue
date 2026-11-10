@@ -8,6 +8,7 @@ import { RouterLink } from 'vue-router'
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/hello-world">Hello World</RouterLink>
       <RouterLink to="/quote-generator">Quote Generator</RouterLink>
+      <RouterLink to="/vue-facts">Vue Facts</RouterLink>
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
@@ -16,6 +17,7 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 header {
   margin-bottom: 1.5rem;
+  margin: 1rem 0.5rem 1.5rem 0.5rem;
   padding: 1rem 1.5rem;
   background: #fff;
   border: 1px solid #ddd;

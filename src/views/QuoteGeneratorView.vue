@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-const quote = ref({
-  quote: 'First, solve the problem. Then, write the code.',
-  author: 'John Johnson',
-})
+const quote = ref<{ quote: string; author: string } | null>(null)
 const isLoading = ref(false)
 const error = ref('')
 
 async function generateQuote() {
   if (isLoading.value) return
 
+  quote.value = null;
   isLoading.value = true
   error.value = ''
 
@@ -40,8 +38,11 @@ onMounted(generateQuote)
     </header>
     <main class="quote-container">
       <div aria-live="polite" :aria-busy="isLoading">
-        <div class="quote">"{{ quote.quote }}"</div>
-        <div class="quoted-person">{{ quote.author }}</div>
+        <template v-if="quote">
+          <div class="quote">"{{ quote.quote }}"</div>
+          <div class="quoted-person">{{ quote.author }}</div>
+        </template>
+        <p v-else-if="isLoading">Loading quote...</p>
       </div>
       <p v-if="error" role="alert">{{ error }}</p>
       <button class="generate-quote" :disabled="isLoading" @click="generateQuote">

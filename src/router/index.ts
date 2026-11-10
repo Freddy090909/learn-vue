@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import('@/views/QuoteGeneratorView.vue'),
     },
     {
+      path: '/vue-facts',
+      name: 'vue-facts',
+      component: () => import('@/views/VueFactsView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('@/views/AboutView.vue'),
